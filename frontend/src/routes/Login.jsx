@@ -1,9 +1,9 @@
-import { StrictMode, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../css/globals.css'
 import '../css/login.css'
 
-import logo_image from '../assets/images/logo_300.png'
+import logo_image from '../assets/images/logo_250.png'
 
 export default function Login() {
     const [email, set_email] = useState('')
@@ -48,7 +48,7 @@ function LoginForm(props) {
                 onChange={event => props.onPasswordChange(event.target.value)} />
 
             <input
-                className='button red'
+                className='button red_bg'
                 type='button'
                 value='Log in'
                 onClick={() => send_login_info(props.email, props.password)} />
