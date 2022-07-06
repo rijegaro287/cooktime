@@ -41,7 +41,6 @@ body {
 }
 
 .form_field {
-    font-size: 1.6rem;
     border: none;
     border-radius: 1rem;
     border: solid 0.2rem var(--light_turquoise);

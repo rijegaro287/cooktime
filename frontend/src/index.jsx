@@ -8,8 +8,9 @@ import {
 import Login from './routes/Login'
 import ResetPassword from './routes/ResetPassword'
 import Register from './routes/Register'
-import Profile from './routes/Profile'
 import NavBar from './routes/NavBar'
+import Profile from './routes/Profile'
+import Newsfeed from './routes/Newsfeed'
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 
@@ -18,6 +19,7 @@ root.render(
         <Routes>
             <Route path='/' element={<NavBar />}>
                 <Route path='/profile' element={<Profile />} />
+                <Route path='/newsfeed' element={<Newsfeed />} />
             </Route>
 
             <Route path='/login' element={<Login />} />

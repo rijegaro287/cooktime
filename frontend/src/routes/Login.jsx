@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+
 import '../css/globals.css'
 import '../css/login.css'
-
 import logo_image from '../assets/images/logo_250.png'
 
 export default function Login() {
