@@ -10,7 +10,7 @@ export default function Login() {
     const [password, set_password] = useState('')
 
     return (
-        <div className='login_content'>
+        <main className='login_content'>
             <img src={logo_image} alt='logo' />
 
             <div className='form_container'>
@@ -22,7 +22,7 @@ export default function Login() {
 
                 <MoreOptions />
             </div>
-        </div>
+        </main>
     )
 }
 

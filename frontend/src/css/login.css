@@ -24,6 +24,10 @@
     font-size: 1.6rem;
 }
 
+.login_form .button {
+    font-size: 2rem;
+}
+
 .more_options {
     display: flex;
     justify-content: space-around;
