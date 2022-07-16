@@ -1,9 +1,14 @@
-.profile_header {
-    padding: 0.5rem;
-    border: 0.1rem solid darkgray;
-    border-radius: 1rem;
+.profile_content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
+.profile_content .button {
+    font-size: 1.8rem;
+}
+
+/* Profile Header */
 .profile_photo {
     display: block;
     margin: 0 auto;
