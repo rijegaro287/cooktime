@@ -6,6 +6,7 @@ import profile_photo from '../assets/images/avatar_150.jpg'
 import recipe_image from '../assets/images/recipe.jpg'
 
 const recipe_1_info = {
+    id: 1,
     recipe_image: recipe_image,
     name: 'Recipe name',
     duration: [0, 30],
@@ -14,6 +15,7 @@ const recipe_1_info = {
     tags: ['Vegan', 'Single', 'Easy', 'Fast']
 }
 const recipe_2_info = {
+    id: 2,
     recipe_image: recipe_image,
     name: 'Recipe long name',
     duration: [1, 1],
@@ -22,6 +24,7 @@ const recipe_2_info = {
     tags: ['Carnivorous', 'Family', 'Hard', 'Fast']
 }
 const recipe_3_info = {
+    id: 3,
     recipe_image: recipe_image,
     name: 'Recipe long long long name',
     duration: [2, 0],

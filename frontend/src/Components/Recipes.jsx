@@ -8,6 +8,7 @@ export default function Recipes(props) {
             {props.recipes.map(
                 (recipe, index) =>
                     <Recipe
+                        key={recipe.id}
                         image={recipe.recipe_image}
                         name={recipe.name}
                         duration={recipe.duration}
@@ -40,7 +41,7 @@ function Recipe(props) {
 
     const tags_element = props.tags.map(
         (tag, index) =>
-            <Link to='/tags' className='tag'>{tag}</Link >)
+            <Link to='/tags' key={index} className='tag'>{tag}</Link >)
 
     return (
         <div className='recipe_content borddered_container'>
