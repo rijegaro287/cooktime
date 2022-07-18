@@ -4,13 +4,14 @@ import '../css/recipes.css'
 
 export default function Recipes(props) {
     return (
-        <section className="recipes">
+        <section className='recipes'>
             {props.recipes.map(
                 (recipe, index) =>
                     <Recipe
                         key={recipe.id}
                         image={recipe.recipe_image}
                         name={recipe.name}
+                        author={recipe.author}
                         duration={recipe.duration}
                         difficulty={recipe.difficulty}
                         portions={recipe.portions}
@@ -50,14 +51,18 @@ function Recipe(props) {
                 src={props.image}
                 alt={`Recipe: ${props.name}`} />
 
-            <div className="recipe_info">
+            <div className='recipe_info'>
                 <h2> <Link
                     to='/recipe'
                     className='simple_link'> {props.name} </Link></h2>
                 {duration_element}
+                <p> Author:
+                    <Link to='/user' className='simple_link'>
+                        <span> {props.author}</span>
+                    </Link></p>
                 <p>Difficulty: <span>{props.difficulty}</span> / 10</p>
                 <p>Portions: <span>{props.portions}</span></p>
-                <div className="tags">{tags_element}</div>
+                <div className='tags'>{tags_element}</div>
             </div>
         </div>
     )

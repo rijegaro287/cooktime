@@ -24,6 +24,12 @@ body {
     --dark_turquoise: rgb(29, 53, 87);
 }
 
+h1,
+h2,
+h3 {
+    margin: 0;
+}
+
 /* Font highlight */
 .dark_turquoise_font {
     color: var(--turquoise);
@@ -52,25 +58,21 @@ body {
 
 .form_container {
     background-color: var(--gray);
+    margin: 0 auto;
     padding: 3rem 2rem;
     width: 80%;
     border-radius: 2rem;
 }
 
-@media (min-width: 480px) {
+@media (min-width: 768px) {
     .form_container {
         width: 70%;
     }
 }
 
-@media (min-width: 768px) {
-    .form_container {
-        width: 50%;
-    }
-}
-
 /* Forms */
 .form_field {
+    flex-grow: 1;
     border: none;
     border-radius: 1rem;
     border: solid 0.2rem var(--light_turquoise);
@@ -83,6 +85,8 @@ body {
 
 /* Buttons */
 .button {
+    text-decoration: none;
+    text-align: center;
     font-weight: bold;
     color: white;
     border: none;
@@ -117,6 +121,7 @@ body {
 /* Links */
 .simple_link {
     text-decoration: none;
+    cursor: pointer;
     color: var(--turquoise);
     transition: 0.2s ease-in;
 }

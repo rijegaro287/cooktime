@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import Recipes from '../Components/Recipes'
 
 import '../css/profile.css'
@@ -9,6 +11,7 @@ const recipe_1_info = {
     id: 1,
     recipe_image: recipe_image,
     name: 'Recipe name',
+    author: 'Author',
     duration: [0, 30],
     difficulty: 2,
     portions: 3,
@@ -18,6 +21,7 @@ const recipe_2_info = {
     id: 2,
     recipe_image: recipe_image,
     name: 'Recipe long name',
+    author: 'Author long name',
     duration: [1, 1],
     difficulty: 6,
     portions: 5,
@@ -27,6 +31,7 @@ const recipe_3_info = {
     id: 3,
     recipe_image: recipe_image,
     name: 'Recipe long long long name',
+    author: 'Author long long long name',
     duration: [2, 0],
     difficulty: 8,
     portions: 10,
@@ -43,10 +48,10 @@ export default function Profile() {
         <div className='container profile_content'>
             <ProfileHeader />
 
-            <button
+            <Link to='/new_recipe'
                 className='button turquoise_bg'
                 onClick={(() => console.log('new recipe'))}
-            >Add recipe</button>
+            >Add recipe</Link>
 
             <Recipes recipes={recipes} />
         </div >
@@ -70,10 +75,10 @@ function ProfileHeader() {
                 src={user_info.profile_photo}
                 alt='profile' />
 
-            <div className="user_info">
+            <div className='user_info'>
                 <h1>{user_info.name} {user_info.last_name}</h1>
 
-                <div className="info_container">
+                <div className='info_container'>
                     <div>
                         <p className='dark_turquoise_font'>{user_info.followers}</p>
                         <p>Followers</p>

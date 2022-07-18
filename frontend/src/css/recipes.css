@@ -9,7 +9,6 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
-
 }
 
 .recipe_content {
@@ -34,7 +33,7 @@
 
 @media (min-width: 900px) {
     .recipe_image {
-        flex: 0 0 35%;
+        flex: 0 0 40%;
         width: 100%;
     }
 }

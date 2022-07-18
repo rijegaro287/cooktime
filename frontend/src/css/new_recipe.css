@@ -1,0 +1,43 @@
+.new_recipe_content h1 {
+    text-align: center;
+    margin: 2rem auto;
+}
+
+.recipe_form {
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe_form .form_field {
+    font-size: 1.8rem;
+    padding: 0.3rem;
+}
+
+.ingredient_list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0;
+}
+
+.ingredient_list li::marker {
+    color: var(--dark_turquoise);
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.ingredient_list .ingredient_input {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.ingredient_input .delete_button {
+    cursor: pointer;
+}
+
+.ingredient_list .new_ingredient {
+    align-self: flex-start;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
