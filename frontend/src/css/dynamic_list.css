@@ -1,0 +1,31 @@
+.dynamic_list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.dynamic_list li::marker {
+    color: var(--dark_turquoise);
+    font-weight: bold;
+}
+
+.dynamic_list .new_element {
+    align-self: flex-start;
+    font-weight: bold;
+}
+
+.dynamic_list .element_input {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.element_input input {
+    flex-grow: 1;
+}
+
+.element_input .delete_button {
+    cursor: pointer;
+}

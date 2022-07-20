@@ -1,9 +1,10 @@
 import { useState } from 'react'
 
+import DynamicList from '../Components/DynamicList'
+
 import '../css/globals.css'
 import '../css/new_recipe.css'
 
-import delete_icon from '../assets/images/delete_icon.png'
 
 export default function AddRecipe() {
     return (
@@ -11,85 +12,189 @@ export default function AddRecipe() {
             <h1>Post new recipe</h1>
 
             <div className='form_container'>
-                <RecipeForm />
+                <NewRecipeForm />
             </div>
         </div>
     )
 }
 
-function RecipeForm() {
+function NewRecipeForm() {
+    const [overview, set_overview] = useState({
+        name: '',
+        type: '',
+        portions: 0,
+        duration: [0, 0],
+        difficulty: 0
+    })
     const [ingredients, set_ingredients] = useState([''])
+    const [instructions, set_instructions] = useState([''])
 
     return (
         <form className='recipe_form'>
+            {console.log('overview:', overview)}
+            {console.log('ingredients:\n', ingredients)}
+            {console.log('instructions:\n', instructions)}
+            <fieldset className='borddered_container'>
+                <legend><h2>Details</h2></legend>
+                <RecipeDetails
+                    overview={overview}
+                    set_overview={set_overview} />
+            </fieldset>
+
             <fieldset className='borddered_container'>
                 <legend><h2>Ingredients</h2></legend>
-                <IngredientList
-                    ingredients={ingredients}
-                    set_ingredients={set_ingredients} />
+                <DynamicList
+                    elements={ingredients}
+                    set_elements={set_ingredients} />
+            </fieldset>
+
+            <fieldset className='borddered_container'>
+                <legend><h2>Instructions</h2></legend>
+                <DynamicList
+                    elements={instructions}
+                    set_elements={set_instructions} />
             </fieldset>
 
             <input type='button' value='submit' onClick={() => console.log(ingredients)} />
         </form>)
 }
 
-function IngredientList(props) {
-    const handle_ingredient_change = (index, event) => {
-        const ingredients_copy = [...props.ingredients]
-        ingredients_copy[index] = event.target.value
-        props.set_ingredients(ingredients_copy)
+function RecipeDetails(props) {
+    const handle_name_change = (event) => {
+        const new_name = event.target.value
+
+        let overview_copy = { ...props.overview }
+        overview_copy.name = new_name
+
+        props.set_overview(overview_copy)
     }
 
-    const handle_new_ingredient = () => {
-        let ingredients_copy = [...props.ingredients]
-        ingredients_copy.push('')
-        props.set_ingredients(ingredients_copy)
+    const handle_type_change = (event) => {
+        const new_type = event.target.value
+
+        let overview_copy = { ...props.overview }
+        overview_copy.type = new_type
+
+        props.set_overview(overview_copy)
     }
 
+    const handle_portions_change = (event) => {
+        const new_portions = event.target.value
 
-    const handle_ingredient_delete = (index) => {
-        if (props.ingredients.length > 1) {
-            let ingredients_copy = [...props.ingredients]
-            ingredients_copy.splice(index, 1)
-            props.set_ingredients(ingredients_copy)
-        }
+        let overview_copy = { ...props.overview }
+        overview_copy.portions = new_portions
+
+        props.set_overview(overview_copy)
+    }
+
+    const handle_duration_hours_change = (event) => {
+        const new_duration_hours = parseInt(event.target.value)
+
+        let overview_copy = { ...props.overview }
+        overview_copy.duration[0] = new_duration_hours
+
+        props.set_overview(overview_copy)
+    }
+
+    const handle_duration_minutes_change = (event) => {
+        const new_duration_minutes = parseInt(event.target.value)
+
+        let overview_copy = { ...props.overview }
+        overview_copy.duration[1] = new_duration_minutes
+
+        props.set_overview(overview_copy)
+    }
+
+    const handle_difficulty_change = (event) => {
+        const new_difficulty = parseInt(event.target.value)
+
+        let overview_copy = { ...props.overview }
+        overview_copy.difficulty = new_difficulty
+
+        props.set_overview(overview_copy)
     }
 
     return (
-        <ol className='ingredient_list'>
-            {props.ingredients.map((ingredient, index) =>
-                <Ingredient
-                    key={index}
-                    index={index}
-                    value={ingredient}
-                    on_change={handle_ingredient_change}
-                    on_delete={handle_ingredient_delete}
-                />)}
-
-            <li key={-1}
-                className='simple_link new_ingredient'
-                onClick={handle_new_ingredient}
-            >New ingredient...</li>
-        </ol>
-    )
-}
-
-function Ingredient(props) {
-    return (
-        <li>
-            <div className='ingredient_input'>
+        <div className='recipe_details'>
+            <label className='detail'>
+                <span>Recipe name:</span>
                 <input
                     type='text'
                     className='form_field'
-                    value={props.value}
-                    onChange={(event) => props.on_change(props.index, event)} />
+                    onChange={(event) => handle_name_change(event)}
+                />
+            </label>
 
-                <img
-                    onClick={() => props.on_delete(props.index)}
-                    className='delete_button'
-                    src={delete_icon}
-                    alt='Delete ingredient' />
+            <label className='detail'>
+                <span>Recipe type:</span>
+                <select
+                    type='select'
+                    className='form_field form_select'
+                    defaultValue='main'
+                    onChange={(event) => handle_type_change(event)}>
+                    <option
+                        value='main'
+                        disabled>-- Select a type --</option>
+                    <option value='breakfast'>Breakfast</option>
+                    <option value='brunch'>Brunch</option>
+                    <option value='lunch'>Lunch</option>
+                    <option value='dinner'>Dinner</option>
+                    <option value='dinner'>Dessert</option>
+                </select>
+            </label>
+
+            <label className='detail'>
+                <span>Portions:</span>
+                <input
+                    type='number'
+                    min={1}
+                    max={15}
+                    defaultValue={1}
+                    className='form_field'
+                    onChange={(event) => handle_portions_change(event)}
+                />
+            </label>
+
+            <label className='detail'>
+                <span>Difficulty:</span>
+                <input
+                    type='number'
+                    min={1}
+                    max={10}
+                    defaultValue={1}
+                    className='form_field'
+                    onChange={(event) => handle_difficulty_change(event)}
+                />
+            </label>
+
+            <div className='detail'>
+                <span>Duration:</span>
+                <div className="duration">
+                    <label>
+                        <input
+                            type='number'
+                            min={0}
+                            max={24}
+                            defaultValue={0}
+                            className='form_field'
+                            onChange={(event) => handle_duration_hours_change(event)}
+                        />
+                        <span> hour(s)</span>
+                    </label>
+                    <label >
+                        <input
+                            type='number'
+                            min={0}
+                            max={59}
+                            defaultValue={0}
+                            className='form_field'
+                            onChange={(event) => handle_duration_minutes_change(event)}
+                        />
+                        <span> minute(s)</span>
+                    </label>
+                </div>
+
             </div>
-        </li>
+        </div>
     )
 }

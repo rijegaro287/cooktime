@@ -54,6 +54,7 @@ h3 {
     padding: 0.5rem;
     border: 0.1rem solid darkgray;
     border-radius: 1rem;
+    min-width: 0;
 }
 
 .form_container {
@@ -72,7 +73,6 @@ h3 {
 
 /* Forms */
 .form_field {
-    flex-grow: 1;
     border: none;
     border-radius: 1rem;
     border: solid 0.2rem var(--light_turquoise);
@@ -81,6 +81,10 @@ h3 {
 .form_field:focus {
     outline: none;
     border: solid 0.2rem var(--turquoise);
+}
+
+.form_select {
+    background-color: white;
 }
 
 /* Buttons */
