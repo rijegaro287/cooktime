@@ -156,3 +156,9 @@ h3 {
     background-color: var(--turquoise);
     transition: 0.2s ease-out;
 }
+
+/* Etc */
+
+.hidden_element {
+    display: none;
+}

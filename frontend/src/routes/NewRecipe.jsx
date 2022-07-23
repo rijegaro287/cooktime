@@ -1,6 +1,9 @@
 import { useState } from 'react'
 
+import ImageUploader from '../Components/ImageUploader'
 import DynamicList from '../Components/DynamicList'
+
+import upload_image from '../assets/images/camera_icon.png'
 
 import '../css/globals.css'
 import '../css/new_recipe.css'
@@ -11,14 +14,13 @@ export default function AddRecipe() {
         <div className='new_recipe_content'>
             <h1>Post new recipe</h1>
 
-            <div className='form_container'>
-                <NewRecipeForm />
-            </div>
+            <NewRecipeForm />
         </div>
     )
 }
 
 function NewRecipeForm() {
+    const [image_url, set_image_url] = useState('')
     const [overview, set_overview] = useState({
         name: '',
         type: '',
@@ -29,11 +31,23 @@ function NewRecipeForm() {
     const [ingredients, set_ingredients] = useState([''])
     const [instructions, set_instructions] = useState([''])
 
+    const handle_submit = () => {
+        console.log('image url:\n', image_url)
+        console.log('overview:', overview)
+        console.log('ingredients:\n', ingredients)
+        console.log('instructions:\n', instructions)
+    }
+
     return (
-        <form className='recipe_form'>
-            {console.log('overview:', overview)}
-            {console.log('ingredients:\n', ingredients)}
-            {console.log('instructions:\n', instructions)}
+        <form className='form_container recipe_form'>
+            <div className="recipe_image">
+                <ImageUploader
+                    className='recipe_image'
+                    default_image={upload_image}
+                    image_url={image_url}
+                    set_image_url={set_image_url} />
+            </div>
+
             <fieldset className='borddered_container'>
                 <legend><h2>Details</h2></legend>
                 <RecipeDetails
@@ -55,7 +69,11 @@ function NewRecipeForm() {
                     set_elements={set_instructions} />
             </fieldset>
 
-            <input type='button' value='submit' onClick={() => console.log(ingredients)} />
+            <input
+                type='button'
+                value='Post recipe'
+                className='button turquoise_bg post_recipe_button'
+                onClick={handle_submit} />
         </form>)
 }
 
